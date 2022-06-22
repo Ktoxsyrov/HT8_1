@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import coil.load
 import com.example.ht8_1.databinding.FragmentHeroDetailsBinding
-import com.example.ht8_1.databinding.FragmentHeroListBinding
 import com.example.ht8_1.model.Hero
 
 class HeroDetailsFragment(hero: Hero) : Fragment() {

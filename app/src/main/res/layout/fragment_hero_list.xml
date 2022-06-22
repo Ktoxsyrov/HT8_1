@@ -15,19 +15,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/hero_item" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="top|right"
+        android:layout_margin="25dp"
+        android:src="@drawable/ic_baseline_info_24"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:id="@+id/infoButton"
+        />
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/containerForDetails"
-        />
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="25dp"
-        android:src="@drawable/ic_baseline_info_24"
-        app:fabCustomSize="50dp"
-        android:id="@+id/infoFAB"
         />
 
 </FrameLayout>

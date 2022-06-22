@@ -7,17 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ht8_1.adapter.HeroesAdapter
 import com.example.ht8_1.databinding.FragmentHeroListBinding
 import com.example.ht8_1.model.Hero
-import com.example.ht8_1.model.InfoFragment
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-import kotlinx.coroutines.flow.combine
 import okhttp3.Call
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -54,7 +51,6 @@ class HeroListFragment : Fragment() {
             override fun onItemClicked(position: Int, view: View) {
                 val clickedHero = heroRecyclerAdapter.getHeroByPos(position)
 
-              //  binding.infoFAB.hide()
                 requireFragmentManager().beginTransaction()
                     .replace(R.id.containerForDetails, HeroDetailsFragment(clickedHero))
                     .commit()
@@ -62,11 +58,10 @@ class HeroListFragment : Fragment() {
             }
         })
 
-        binding.infoFAB.setOnClickListener {
+        binding.infoButton.setOnClickListener {
             requireFragmentManager().beginTransaction()
                 .replace(R.id.containerForDetails, InfoFragment())
                 .commit()
-            Toast.makeText(requireContext(), "@kktoxs", Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
@@ -97,7 +92,7 @@ class HeroListFragment : Fragment() {
             val moshi = Moshi.Builder().build()
             val listHero = Types.newParameterizedType(List::class.java, Hero::class.java)
             val jsonAdapter: JsonAdapter<List<Hero>> = moshi.adapter(listHero)
-            val heroes = jsonAdapter.fromJson(dataFromFile!!)
+            val heroes = jsonAdapter.fromJson(dataFromFile)
             println(heroes?.get(15))
             for (i in 0 until heroes!!.size) {
                 heroesList?.add(heroes[i])
